@@ -9,16 +9,14 @@ set -x
 cmd=`jq -r .command config.json`
 case "$cmd" in
 
-    dipy_denoise_nlmeans)
+    dipy_gibbs_ringing)
         cat > script.sh <<EOF
 #!/bin/bash
 $cmd --force \
     --out_dir $(pwd) \
-    --sigma $(jq -r .sigma config.json) \
-    --patch_radius $(jq -r .patch_radius config.json) \
-    --block_radius $(jq -r .block_radius config.json) \
-    --rician $(jq -r .rician config.json) \
-    --out_denoised dwi.nii.gz \
+    --slice_axis $(jq -r .slice_axis config.json) \
+    --n_points=3 $(jq -r .n_points config.json) \
+    --out_unring dwi.nii.gz \
     $(jq -r .dwi config.json)
 EOF
         ;;
