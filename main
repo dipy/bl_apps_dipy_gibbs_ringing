@@ -15,7 +15,7 @@ case "$cmd" in
 $cmd --force \
     --out_dir $(pwd) \
     --slice_axis $(jq -r .slice_axis config.json) \
-    --n_points=3 $(jq -r .n_points config.json) \
+    --n_points $(jq -r .n_points config.json) \
     --out_unring dwi.nii.gz \
     $(jq -r .dwi config.json)
 EOF
