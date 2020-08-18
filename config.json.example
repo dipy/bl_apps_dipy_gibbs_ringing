@@ -1,8 +1,7 @@
 {
-    "command": "dipy_gibbs_ringing",
-    "slice_axis":2,
-    "n_points":3,
+    "slice_axis": 2,
+    "n_points": 3,
     "dwi": "testdata/data.nii.gz",
     "bvals": "testdata/data.bvals",
-    "bvecs": "testdata/data.bvecs",
+    "bvecs": "testdata/data.bvecs"
 }
