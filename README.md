@@ -3,6 +3,48 @@
 
 # Dipy remove gibbs ringing on Diffusion MRI
 
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+> **Removes Gibbs ringing artefacts from DWI with DIPY's local subvoxel-shift method (dipy_gibbs_ringing) and outputs the corrected DWI.**
+
+Runs dipy_gibbs_ringing (DIPY 1.1.1) on the DWI along the slice axis given by slice_axis; bvals and bvecs are copied unchanged. Use it early in DWI preprocessing, before denoising-sensitive model fitting. Set slice_axis to the axis of the acquired slices.
+
+| | |
+|---|---|
+| 📥 **Inputs** | `neuro/dwi` |
+| 📤 **Outputs** | `neuro/dwi` |
+| 🐳 **Container** | `brainlife/dipy:1.1.1` |
+| ⚙️ **Resources** | 8 CPUs |
+| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.327](https://doi.org/10.25663/brainlife.app.327) |
+
+#### 📥 Inputs
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `dwi` | `neuro/dwi` | yes | DWI image with bvals and bvecs. |
+
+#### 📤 Outputs
+
+| Output | Datatype | Description |
+|---|---|---|
+| `output` | `neuro/dwi` | Gibbs-unringed DWI (dwi.nii.gz) with the original bvals and bvecs. |
+
+<details>
+<summary><b>⚙️ Parameters</b> (2)</summary>
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `slice_axis` | number | `2` | Data axis corresponding to the number of acquired slices. Default is set to the third axis(2). Could be (0, 1, or 2). |
+| `n_points` | number | `3` | Number of neighbour points to access local TV |
+
+</details>
+
+📚 **References used by this App:**
+- Garyfallidis E, et al. Dipy, a library for the analysis of diffusion MRI data. Front Neuroinform 8:8 (2014). [doi:10.3389/fninf.2014.00008](https://doi.org/10.3389/fninf.2014.00008)
+- Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. Sci Data 6, 69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
+
+<!-- brainlife-app:end -->
+
 The App uses the Gibbs unringing method to remove artifacts on diffusion-weighted magnetic resonance imaging data.
 
 ### Authors
